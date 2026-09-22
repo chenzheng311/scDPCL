@@ -83,12 +83,4 @@ python scDPCL_release/run.py --dataset BMNC
 
 The default `two_group` profile uses one configuration for PBMC-10k and a shared configuration for PBMC-3k and BMNC. Additional profiles are available through `--profile unified` and `--profile legacy_tuned`. See `config/TWO_GROUP_PROTOCOL.md`, `config/UNIFIED_PROTOCOL.md`, and `config/datasets.json` for details.
 
-## Tutorials
 
-Launch Jupyter from the complete project working tree:
-
-```bash
-python -m jupyter lab
-```
-
-Open the corresponding notebook under `scDPCL_release/tutorial/`. Training is disabled by default with `RUN_TRAINING = False`; set it to `True` only after the path, environment, and dry-run checks pass.

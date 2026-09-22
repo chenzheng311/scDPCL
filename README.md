@@ -1,51 +1,94 @@
-# scDPCL 整理版模型
+# scDPCL
 
-该目录将当前优化模型、复现实验配置和三个数据集的 notebook 集中到一个独立发布包中。
+**Disentangled Private-Shared Collaborative Learning for Matched Single-Cell Multi-Omics Clustering**
 
-## 目录
+<p align="center">
+  <img src="assets/framework.png" alt="The scDPCL framework" width="100%">
+</p>
+
+scDPCL is a graph-based deep clustering framework for matched single-cell multi-omics data. It integrates RNA expression and chromatin accessibility profiles measured from the same cells through four main components: modality-specific graph encoding, shared-private representation disentanglement, FIRND-enhanced assignment learning, and confidence-aware label fusion.
+
+The shared representations capture biological signals that are consistent across modalities, while the private representations retain modality-specific information. Raw and graph-refined assignment distributions are combined within each modality, and cell-level confidence is then used to adaptively fuse RNA and ATAC evidence for the final clustering result.
+
+## Requirements
+
+The experiments were developed with the following environment:
+
+- Python 3.11.4
+- PyTorch 2.0.1
+- NumPy 1.24.4
+- SciPy 1.13.0
+- scikit-learn 1.3.2
+- tqdm 4.66.1
+- Matplotlib 3.7.2
+- JupyterLab or Jupyter Notebook for the tutorials
+
+CUDA is recommended for model training.
+
+## Usage
+
+### Clone the repository
+
+```bash
+git clone https://github.com/chenzheng311/scDPCL.git
+cd scDPCL
+```
+
+### Code structure
+
+- `src/data_loader.py`: loads preprocessed features and constructs cell graphs.
+- `src/encoder.py`: implements the base graph autoencoder.
+- `src/encoder_dpcl.py`: implements shared-private disentanglement and assignment modules.
+- `src/scDPCL.py`: defines the complete scDPCL architecture and FIRND propagation.
+- `src/ops_loss_dpcl.py`: defines reconstruction, contrastive, and disentanglement losses.
+- `src/main_dpcl.py`: provides the model training and evaluation pipeline.
+- `src/utils_dpcl.py`: provides clustering, fusion, evaluation, and recovery utilities.
+- `config/`: stores dataset metadata and reproducible experiment profiles.
+- `tutorial/`: contains notebooks for PBMC-3k, PBMC-10k, and BMNC.
+- `run.py`: provides a unified command-line entry point for the organized release.
+
+### Prepare data
+
+Input data and pretrained weights are not included in this repository. The reproduction wrapper currently expects this repository to be placed as `scDPCL_release/` inside the complete project working tree:
 
 ```text
-scDPCL_release/
-  src/          当前模型源码快照
-  config/       参数、数据集信息与复现脚本
-  tutorial/     BMNC、PBMC-3k、PBMC-10k 运行 notebook
-  outputs/      notebook 实验输出
-  run.py        统一命令行入口
+project-root/
+  input/
+    PBMC-10k/
+    PBMC-3k/
+    BMNC/
+  model/
+    main_dpcl.py
+  model_pretrained/
+  scDPCL_release/
 ```
 
-`src/` 是创建本发布包时的模型快照。`run.py` 使用 `config/reproduce.py` 调用项目根目录下的正式模型入口，数据和预训练权重仍从项目原有的 `input/` 与 `model_pretrained/` 读取，避免复制大文件。
+Each dataset directory should contain the preprocessed RNA and ATAC feature matrices, labels, and the required graph files. Run a dry check before training to list any missing files.
 
-## 环境
+### Example commands
 
-```powershell
-conda activate sedrenv
-cd E:\code\scMDCL-main
+Take PBMC-10k as an example:
+
+```bash
+python scDPCL_release/run.py --dataset PBMC-10k --dry-run
+python scDPCL_release/run.py --dataset PBMC-10k
 ```
 
-建议先检查命令和输入文件：
+The other benchmark datasets can be run in the same way:
 
-```powershell
-python scDPCL_release\run.py --dataset PBMC-10k --dry-run
-python scDPCL_release\run.py --dataset PBMC-3k --dry-run
-python scDPCL_release\run.py --dataset BMNC --dry-run
+```bash
+python scDPCL_release/run.py --dataset PBMC-3k
+python scDPCL_release/run.py --dataset BMNC
 ```
 
-正式运行：
+The default `two_group` profile uses one configuration for PBMC-10k and a shared configuration for PBMC-3k and BMNC. Additional profiles are available through `--profile unified` and `--profile legacy_tuned`. See `config/TWO_GROUP_PROTOCOL.md`, `config/UNIFIED_PROTOCOL.md`, and `config/datasets.json` for details.
 
-```powershell
-python scDPCL_release\run.py --dataset PBMC-10k
-python scDPCL_release\run.py --dataset PBMC-3k
-python scDPCL_release\run.py --dataset BMNC
-```
+## Tutorials
 
-默认使用 `two_group` 协议：PBMC-10k 使用一套参数，PBMC-3k 与 BMNC 共用另一套参数。具体配置见 `config/TWO_GROUP_PROTOCOL.md` 和 `config/datasets.json`。
+Launch Jupyter from the complete project working tree:
 
-## Notebook
-
-在 `sedrenv` 环境中安装并启动 Jupyter：
-
-```powershell
+```bash
 python -m jupyter lab
 ```
 
-打开 `scDPCL_release/tutorial/` 下对应 notebook。每个 notebook 包含路径与环境检查、数据统计、dry-run、正式训练开关和结果读取。默认 `RUN_TRAINING = False`，确认配置后改为 `True` 再运行训练单元。
+Open the corresponding notebook under `scDPCL_release/tutorial/`. Training is disabled by default with `RUN_TRAINING = False`; set it to `True` only after the path, environment, and dry-run checks pass.

@@ -47,23 +47,7 @@ cd scDPCL
 - `tutorial/`: contains notebooks for PBMC-3k, PBMC-10k, and BMNC.
 - `run.py`: provides a unified command-line entry point for the organized release.
 
-### Prepare data
 
-Input data and pretrained weights are not included in this repository. The reproduction wrapper currently expects this repository to be placed as `scDPCL_release/` inside the complete project working tree:
-
-```text
-project-root/
-  input/
-    PBMC-10k/
-    PBMC-3k/
-    BMNC/
-  model/
-    main_dpcl.py
-  model_pretrained/
-  scDPCL_release/
-```
-
-Each dataset directory should contain the preprocessed RNA and ATAC feature matrices, labels, and the required graph files. Run a dry check before training to list any missing files.
 
 ### Example commands
 

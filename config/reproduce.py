@@ -12,134 +12,189 @@ from datetime import datetime
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = Path(__file__).with_name("datasets.json")
 ALL_DATASETS = ("PBMC-10k", "PBMC-3k", "BMNC")
 
-UNIFIED_ARGS = [
-    "--seed", "0",
-    "--pretrain",
-    "--train_after_pretrain",
-    "--k", "10",
-    "--n_z", "20",
-    "--disentangle_mode", "hard",
-    "--n_shared", "16",
-    "--n_private", "4",
-    "--alpha1", "0.1",
-    "--alpha2", "10",
-    "--target_power", "2",
-    "--beta", "0",
-    "--gamma", "0",
-    "--pretrain_gamma", "0",
-    "--lambda_cell", "1",
-    "--cell_loss", "legacy",
-    "--warmup_epochs", "100",
-    "--beta_ramp_epochs", "100",
-    "--gamma_start_epochs", "200",
-    "--gamma_ramp_epochs", "100",
-    "--dropout", "0.4",
-    "--center_mode", "train",
-    "--eval_q_mode", "adaptive",
-    "--eval_view_weight", "0.65",
-    "--eval_firnd_weight", "0.6",
-    "--eval_q_power", "1",
-    "--eval_ema_decay", "0.95",
-    "--cluster_recovery_splits", "2",
-    "--cluster_recovery_pca", "5",
-    "--cluster_recovery_view1_weight", "3",
-]
-
-DATASET_ARGS = {
-    "PBMC-10k": ["--n_d1", "100", "--n_d2", "100", "--lr", "0.0005"],
-    "PBMC-3k": ["--n_d1", "100", "--n_d2", "49", "--lr", "0.0008"],
-    "BMNC": ["--n_d1", "100", "--n_d2", "25", "--lr", "0.001"],
-}
-
-LEGACY_TUNED_ARGS = {
-    "PBMC-10k": [
-        "--seed", "0",
-        "--scmdcl_init",
-        "--k", "20",
-        "--multi_k", "15,20,25",
-        "--n_d1", "100",
-        "--n_d2", "100",
-        "--disentangle_mode", "hard",
-        "--n_shared", "20",
-        "--n_private", "0",
-        "--alpha2", "7.5",
-        "--target_power", "2",
-        "--lr", "0.0008",
-        "--beta", "0",
-        "--gamma", "0",
-        "--lambda_cell", "1",
-        "--cell_loss", "legacy",
-        "--dropout", "0",
-        "--center_mode", "eval",
-        "--eval_q_mode", "adaptive",
-        "--eval_view_weight", "0.35",
-        "--eval_firnd_weight", "0.4",
-        "--eval_q_power", "1",
-        "--eval_ema_decay", "0.975",
-        "--cluster_recovery_splits", "2",
-        "--cluster_recovery_pca", "20",
-        "--cluster_recovery_view1_weight", "1.25",
-    ],
-    "PBMC-3k": [
-        "--seed", "0",
-        "--pretrain",
-        "--train_after_pretrain",
-        "--k", "10",
-        "--n_d1", "100",
-        "--n_d2", "49",
-        "--disentangle_mode", "hard",
-        "--n_shared", "16",
-        "--n_private", "4",
-        "--alpha2", "10",
-        "--target_power", "2",
-        "--lr", "0.0008",
-        "--beta", "0",
-        "--gamma", "0",
-        "--lambda_cell", "1",
-        "--cell_loss", "legacy",
-        "--dropout", "0.4",
-        "--center_mode", "train",
-        "--eval_q_mode", "adaptive",
-        "--eval_view_weight", "0.75",
-        "--eval_firnd_weight", "0.6",
-        "--eval_ema_decay", "0.95",
-        "--cluster_recovery_splits", "1",
-        "--cluster_recovery_pca", "5",
-        "--cluster_recovery_view1_weight", "3",
-    ],
-    "BMNC": [
-        "--seed", "0",
-        "--pretrain",
-        "--train_after_pretrain",
-        "--k", "10",
-        "--n_d1", "100",
-        "--n_d2", "25",
-        "--disentangle_mode", "hard",
-        "--n_shared", "16",
-        "--n_private", "4",
-        "--alpha2", "10",
-        "--target_power", "2",
-        "--lr", "0.001",
-        "--beta", "0",
-        "--gamma", "0",
-        "--lambda_cell", "1",
-        "--cell_loss", "legacy",
-        "--dropout", "0.4",
-        "--center_mode", "eval",
-        "--eval_q_mode", "firnd",
-        "--eval_view_weight", "0.65",
-    ],
-}
-
-TWO_GROUP_ARGS = {
-    "PBMC-10k": LEGACY_TUNED_ARGS["PBMC-10k"],
-    "PBMC-3k": [*UNIFIED_ARGS, *DATASET_ARGS["PBMC-3k"]],
-    "BMNC": [*UNIFIED_ARGS, *DATASET_ARGS["BMNC"]],
-}
+TWO_GROUP_ARGS = {'PBMC-10k': ['--seed',
+              '0',
+              '--scmdcl_init',
+              '--k',
+              '20',
+              '--multi_k',
+              '15,20,25',
+              '--n_d1',
+              '100',
+              '--n_d2',
+              '100',
+              '--disentangle_mode',
+              'hard',
+              '--n_shared',
+              '20',
+              '--n_private',
+              '0',
+              '--alpha2',
+              '7.5',
+              '--target_power',
+              '2',
+              '--lr',
+              '0.0008',
+              '--beta',
+              '0',
+              '--gamma',
+              '0',
+              '--lambda_cell',
+              '1',
+              '--cell_loss',
+              'legacy',
+              '--dropout',
+              '0',
+              '--center_mode',
+              'eval',
+              '--eval_q_mode',
+              'adaptive',
+              '--eval_view_weight',
+              '0.35',
+              '--eval_firnd_weight',
+              '0.4',
+              '--eval_q_power',
+              '1',
+              '--eval_ema_decay',
+              '0.975',
+              '--cluster_recovery_splits',
+              '2',
+              '--cluster_recovery_pca',
+              '20',
+              '--cluster_recovery_view1_weight',
+              '1.25'],
+ 'PBMC-3k': ['--seed',
+             '0',
+             '--pretrain',
+             '--train_after_pretrain',
+             '--k',
+             '10',
+             '--n_z',
+             '20',
+             '--disentangle_mode',
+             'hard',
+             '--n_shared',
+             '16',
+             '--n_private',
+             '4',
+             '--alpha1',
+             '0.1',
+             '--alpha2',
+             '10',
+             '--target_power',
+             '2',
+             '--beta',
+             '0',
+             '--gamma',
+             '0',
+             '--pretrain_gamma',
+             '0',
+             '--lambda_cell',
+             '1',
+             '--cell_loss',
+             'legacy',
+             '--warmup_epochs',
+             '100',
+             '--beta_ramp_epochs',
+             '100',
+             '--gamma_start_epochs',
+             '200',
+             '--gamma_ramp_epochs',
+             '100',
+             '--dropout',
+             '0.4',
+             '--center_mode',
+             'train',
+             '--eval_q_mode',
+             'adaptive',
+             '--eval_view_weight',
+             '0.65',
+             '--eval_firnd_weight',
+             '0.6',
+             '--eval_q_power',
+             '1',
+             '--eval_ema_decay',
+             '0.95',
+             '--cluster_recovery_splits',
+             '2',
+             '--cluster_recovery_pca',
+             '5',
+             '--cluster_recovery_view1_weight',
+             '3',
+             '--n_d1',
+             '100',
+             '--n_d2',
+             '49',
+             '--lr',
+             '0.0008'],
+ 'BMNC': ['--seed',
+          '0',
+          '--pretrain',
+          '--train_after_pretrain',
+          '--k',
+          '10',
+          '--n_z',
+          '20',
+          '--disentangle_mode',
+          'hard',
+          '--n_shared',
+          '16',
+          '--n_private',
+          '4',
+          '--alpha1',
+          '0.1',
+          '--alpha2',
+          '10',
+          '--target_power',
+          '2',
+          '--beta',
+          '0',
+          '--gamma',
+          '0',
+          '--pretrain_gamma',
+          '0',
+          '--lambda_cell',
+          '1',
+          '--cell_loss',
+          'legacy',
+          '--warmup_epochs',
+          '100',
+          '--beta_ramp_epochs',
+          '100',
+          '--gamma_start_epochs',
+          '200',
+          '--gamma_ramp_epochs',
+          '100',
+          '--dropout',
+          '0.4',
+          '--center_mode',
+          'train',
+          '--eval_q_mode',
+          'adaptive',
+          '--eval_view_weight',
+          '0.65',
+          '--eval_firnd_weight',
+          '0.6',
+          '--eval_q_power',
+          '1',
+          '--eval_ema_decay',
+          '0.95',
+          '--cluster_recovery_splits',
+          '2',
+          '--cluster_recovery_pca',
+          '5',
+          '--cluster_recovery_view1_weight',
+          '3',
+          '--n_d1',
+          '100',
+          '--n_d2',
+          '25',
+          '--lr',
+          '0.001']}
 
 METRIC_PATTERN = (
     r"ARI:\s*(?P<ari>[0-9.]+),\s*NMI:\s*(?P<nmi>[0-9.]+),\s*"
@@ -164,11 +219,10 @@ def parse_args():
     )
     parser.add_argument(
         "--profile",
-        choices=("unified", "two_group", "legacy_tuned"),
-        default="unified",
+        choices=("two_group",),
+        default="two_group",
         help=(
-            "Use one shared configuration, a PBMC-10k/PBMC-3k+BMNC "
-            "two-group protocol, or historical per-dataset settings."
+            "The current PBMC-10k/PBMC-3k+BMNC two-group protocol."
         ),
     )
     parser.add_argument(
@@ -216,13 +270,7 @@ def required_files(name, info, mode, profile):
         data_dir / "{}_fea.npy".format(info["second_view"]),
         data_dir / "label.npy",
     ]
-    graph_k = [20]
-    if mode == "optimized" and profile == "unified":
-        graph_k = [10]
-    elif mode == "optimized" and profile == "two_group":
-        graph_k = info["available_k"] if name == "PBMC-10k" else [10]
-    elif mode == "optimized" and profile == "legacy_tuned":
-        graph_k = info["available_k"] if name == "PBMC-10k" else [10]
+    graph_k = [20] if mode == "original" else ([15, 20, 25] if name == "PBMC-10k" else [10])
     for k_value in graph_k:
         files.extend(
             [
@@ -232,7 +280,7 @@ def required_files(name, info, mode, profile):
         )
     if (
         mode == "optimized"
-        and profile in ("two_group", "legacy_tuned")
+        and profile == "two_group"
         and name == "PBMC-10k"
     ):
         files.append(ROOT / "model_pretrained" / "{}_pretrain.pkl".format(name))
@@ -254,15 +302,12 @@ def validate_inputs(datasets, manifest, mode, profile):
 
 def optimized_command(name, python_executable, output_root, profile):
     output_dir = output_root / "outputs" / name
-    if profile == "unified":
-        model_args = [*UNIFIED_ARGS, *DATASET_ARGS[name]]
-    elif profile == "two_group":
-        model_args = TWO_GROUP_ARGS[name]
-    else:
-        model_args = LEGACY_TUNED_ARGS[name]
+    if profile != "two_group":
+        raise ValueError("Only the current two_group configuration is included.")
+    model_args = TWO_GROUP_ARGS[name]
     return [
         python_executable,
-        str(ROOT / "model" / "main_dpcl.py"),
+        str(ROOT / "src" / "main_dpcl.py"),
         "--name",
         name,
         *model_args,
@@ -282,8 +327,8 @@ def original_commands(name, info, python_executable, reuse_pretrain):
     checkpoint = ROOT / "model_pretrained" / "{}_pretrain.pkl".format(name)
     commands = []
     if not (reuse_pretrain and checkpoint.is_file()):
-        commands.append(("pretrain", [python_executable, str(ROOT / "main.py"), *common, "--pretrain", "True"]))
-    commands.append(("train", [python_executable, str(ROOT / "main.py"), *common]))
+        commands.append(("pretrain", [python_executable, str(ROOT / "baseline" / "main.py"), *common, "--pretrain", "True"]))
+    commands.append(("train", [python_executable, str(ROOT / "baseline" / "main.py"), *common]))
     return commands
 
 
@@ -376,7 +421,7 @@ def main():
     output_root = (
         Path(args.output_root).expanduser()
         if args.output_root
-        else ROOT / "model" / "experiment_logs" / "reproduction_selected_{}".format(timestamp)
+        else ROOT / "outputs" / "reproduction_selected_{}".format(timestamp)
     )
     if not output_root.is_absolute():
         output_root = ROOT / output_root
@@ -421,6 +466,18 @@ def main():
 
     rows = []
     for name, stage, command in planned:
+        if args.mode == "optimized":
+            # Save the actual argv and every implicit default beside this run.
+            if str(ROOT) not in sys.path:
+                sys.path.insert(0, str(ROOT))
+            from config.export_parameters import snapshot
+            parameters = snapshot(args.profile, name, cli=command[2:])
+            (output_root / "{}_{}_parameters.json".format(name, stage)).write_text(
+                json.dumps(parameters, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+        else:
+            (ROOT / "output" / name).mkdir(parents=True, exist_ok=True)
         log_path = output_root / "{}_{}.log".format(name, stage)
         returncode = run_command(command, log_path)
         row = {

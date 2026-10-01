@@ -1,0 +1,22 @@
+{
+  "captured_at_utc": "2026-10-01T06:44:52.350674+00:00",
+  "python": "3.11.3 | packaged by Anaconda, Inc. | (main, May 15 2023, 15:41:31) [MSC v.1916 64 bit (AMD64)]",
+  "python_executable": "D:\\anaconda3\\envs\\sedrenv\\python.exe",
+  "platform": "Windows-10-10.0.26100-SP0",
+  "core_packages": {
+    "torch": "2.1.0",
+    "numpy": "1.26.4",
+    "scipy": "1.14.1",
+    "scikit-learn": "1.7.0",
+    "tqdm": "4.65.0",
+    "matplotlib": "3.9.2",
+    "munkres": "1.1.4",
+    "joblib": "1.5.2",
+    "threadpoolctl": "3.5.0"
+  },
+  "torch_cuda_build": "12.1",
+  "cudnn": 8801,
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce RTX 4070 Ti SUPER",
+  "source": "Inspected local sedrenv; package versions in old README were not assumed current."
+}

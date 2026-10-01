@@ -28,6 +28,7 @@ from encoder import IGAE
 from encoder_dpcl import (
     AdaptiveDisentangleHead,
     DisentangleHead,
+    MLPAE,
     ResidualDisentangleHead,
 )
 from ops_loss_dpcl import CellContrastLoss, DisentangleLoss, PrototypeContrastLoss
@@ -87,6 +88,29 @@ def parse_args():
     parser.add_argument("--lambda_util", type=float, default=0.0)
     parser.add_argument("--util_min_mass", type=float, default=0.005)
     parser.add_argument("--util_start_epoch", type=int, default=200)
+    parser.add_argument("--lambda_balance", type=float, default=0.0)
+    parser.add_argument("--balance_start_epoch", type=int, default=0)
+    parser.add_argument(
+        "--balance_source",
+        type=str,
+        default="all",
+        choices=["firnd", "raw", "all", "eval"],
+    )
+    parser.add_argument("--lambda_capacity", type=float, default=0.0)
+    parser.add_argument("--capacity_min_mass", type=float, default=0.0)
+    parser.add_argument("--capacity_max_mass", type=float, default=0.0)
+    parser.add_argument("--capacity_start_epoch", type=int, default=0)
+    parser.add_argument(
+        "--capacity_source",
+        type=str,
+        default="eval",
+        choices=["firnd", "raw", "all", "eval"],
+    )
+    parser.add_argument("--lambda_confidence", type=float, default=0.0)
+    parser.add_argument("--confidence_start_epoch", type=int, default=0)
+    parser.add_argument("--lambda_teacher", type=float, default=0.0)
+    parser.add_argument("--teacher_start_epoch", type=int, default=50)
+    parser.add_argument("--teacher_ema_decay", type=float, default=0.99)
     parser.add_argument("--lambda_center_sep", type=float, default=0.0)
     parser.add_argument("--center_sep_margin", type=float, default=0.5)
     parser.add_argument("--center_sep_start_epoch", type=int, default=200)
@@ -108,6 +132,13 @@ def parse_args():
     parser.add_argument("--n_z", type=int, default=20)
     parser.add_argument("--n_shared", type=int, default=16)
     parser.add_argument("--n_private", type=int, default=4)
+    parser.add_argument(
+        "--backbone_type",
+        type=str,
+        default="gae",
+        choices=["gae", "mlp"],
+        help="Use graph autoencoder backbone or simple MLP autoencoder backbone.",
+    )
     parser.add_argument(
         "--disentangle_mode",
         type=str,
@@ -173,6 +204,16 @@ def parse_args():
 
 
 def build_igae(args, n_input):
+    if args.backbone_type == "mlp":
+        return MLPAE(
+            n_input=n_input,
+            n_z=args.n_z,
+            enc_hidden1=args.gae_n_enc_1,
+            enc_hidden2=args.gae_n_enc_2,
+            dec_hidden1=args.gae_n_dec_1,
+            dec_hidden2=args.gae_n_dec_2,
+            dropout=args.dropout,
+        )
     return IGAE(
         gae_n_enc_1=args.gae_n_enc_1,
         gae_n_enc_2=args.gae_n_enc_2,
@@ -425,6 +466,46 @@ def cluster_utilization_loss(q1, q2, min_mass):
     return deficit.pow(2).mean()
 
 
+def assignment_sources(q1, q2, source, q_eval=None):
+    if source == "firnd":
+        return torch.stack([q1[0], q2[0]], dim=0)
+    if source == "raw":
+        return torch.stack([q1[1], q2[1]], dim=0)
+    if source == "eval":
+        if q_eval is None:
+            raise ValueError("q_eval is required when balance_source='eval'")
+        return q_eval.unsqueeze(0)
+    return torch.stack([q1[0], q1[1], q2[0], q2[1]], dim=0)
+
+
+def assignment_balance_loss(q1, q2, source="all", q_eval=None):
+    assignments = assignment_sources(q1, q2, source, q_eval)
+    marginal = assignments.mean(dim=(0, 1)).clamp_min(1e-12)
+    uniform = torch.full_like(marginal, 1.0 / marginal.numel())
+    return F.kl_div(marginal.log(), uniform, reduction="batchmean")
+
+
+def assignment_capacity_loss(q1, q2, source="eval", q_eval=None, min_mass=0.0, max_mass=0.0):
+    assignments = assignment_sources(q1, q2, source, q_eval)
+    marginal = assignments.mean(dim=(0, 1))
+    penalties = []
+    if min_mass > 0:
+        min_mass = max(float(min_mass), 1e-6)
+        penalties.append((F.relu(min_mass - marginal) / min_mass).pow(2))
+    if max_mass > 0:
+        max_mass = max(float(max_mass), 1e-6)
+        penalties.append((F.relu(marginal - max_mass) / max_mass).pow(2))
+    if not penalties:
+        return torch.zeros((), device=marginal.device)
+    return torch.stack(penalties, dim=0).mean()
+
+
+def assignment_confidence_loss(q1, q2, source="all", q_eval=None):
+    assignments = assignment_sources(q1, q2, source, q_eval).clamp_min(1e-12)
+    entropy = -(assignments * assignments.log()).sum(dim=2)
+    return entropy.mean() / np.log(float(assignments.shape[2]))
+
+
 def center_separation_loss(model, margin):
     if model.share_cluster_centers:
         centers = [model.cluster_centers]
@@ -595,6 +676,7 @@ def train(model, x1, adj1, x2, adj2, firnd_adj1, firnd_adj2, y, args):
     )
     search_best = {}
     search_ema = {}
+    q_teacher = None
 
     pbar = tqdm.tqdm(range(args.epoch), ncols=200)
     for epoch in pbar:
@@ -625,10 +707,101 @@ def train(model, x1, adj1, x2, adj2, firnd_adj1, firnd_adj2, y, args):
         loss_kl1, loss_kl2 = kl_losses(q1, q2, epoch, args)
         loss_dis = dis_criterion(z_s1, z_p1) + dis_criterion(z_s2, z_p2)
         loss_cell = cell_criterion(z_firnd1, z_firnd2)
+        q_teacher_current = None
+        if args.lambda_teacher > 0:
+            q_teacher_current = fused_assignment_q(
+                q1,
+                q2,
+                args.eval_q_mode,
+                args.eval_view_weight,
+                args.eval_q_power,
+                args.eval_firnd_weight,
+                args.eval_confidence,
+            )
         if args.lambda_util > 0 and epoch >= args.util_start_epoch:
             loss_util = cluster_utilization_loss(q1, q2, args.util_min_mass)
         else:
             loss_util = torch.zeros((), device=args.device)
+        if args.lambda_balance > 0 and epoch >= args.balance_start_epoch:
+            balance_q_eval = (
+                fused_assignment_q(
+                    q1,
+                    q2,
+                    args.eval_q_mode,
+                    args.eval_view_weight,
+                    args.eval_q_power,
+                    args.eval_firnd_weight,
+                    args.eval_confidence,
+                )
+                if args.balance_source == "eval"
+                else None
+            )
+            loss_balance = assignment_balance_loss(
+                q1,
+                q2,
+                args.balance_source,
+                balance_q_eval,
+            )
+        else:
+            loss_balance = torch.zeros((), device=args.device)
+        if args.lambda_capacity > 0 and epoch >= args.capacity_start_epoch:
+            capacity_q_eval = (
+                fused_assignment_q(
+                    q1,
+                    q2,
+                    args.eval_q_mode,
+                    args.eval_view_weight,
+                    args.eval_q_power,
+                    args.eval_firnd_weight,
+                    args.eval_confidence,
+                )
+                if args.capacity_source == "eval"
+                else None
+            )
+            loss_capacity = assignment_capacity_loss(
+                q1,
+                q2,
+                args.capacity_source,
+                capacity_q_eval,
+                args.capacity_min_mass,
+                args.capacity_max_mass,
+            )
+        else:
+            loss_capacity = torch.zeros((), device=args.device)
+        if args.lambda_confidence > 0 and epoch >= args.confidence_start_epoch:
+            confidence_q_eval = (
+                fused_assignment_q(
+                    q1,
+                    q2,
+                    args.eval_q_mode,
+                    args.eval_view_weight,
+                    args.eval_q_power,
+                    args.eval_firnd_weight,
+                    args.eval_confidence,
+                )
+                if args.balance_source == "eval"
+                else None
+            )
+            loss_confidence = assignment_confidence_loss(
+                q1,
+                q2,
+                args.balance_source,
+                confidence_q_eval,
+            )
+        else:
+            loss_confidence = torch.zeros((), device=args.device)
+        if (
+            args.lambda_teacher > 0
+            and q_teacher is not None
+            and epoch >= args.teacher_start_epoch
+        ):
+            teacher_target = q_teacher.detach()
+            loss_teacher = distribution_loss(q1, teacher_target) + distribution_loss(
+                q2,
+                teacher_target,
+            )
+        else:
+            loss_teacher = torch.zeros((), device=args.device)
         if (
             args.lambda_center_sep > 0
             and epoch >= args.center_sep_start_epoch
@@ -655,6 +828,10 @@ def train(model, x1, adj1, x2, adj2, firnd_adj1, firnd_adj2, y, args):
             + beta_weight * loss_proto
             + gamma_weight * loss_dis
             + args.lambda_util * loss_util
+            + args.lambda_balance * loss_balance
+            + args.lambda_capacity * loss_capacity
+            + args.lambda_confidence * loss_confidence
+            + args.lambda_teacher * loss_teacher
             + args.lambda_center_sep * loss_center_sep
         )
 
@@ -663,6 +840,15 @@ def train(model, x1, adj1, x2, adj2, firnd_adj1, firnd_adj2, y, args):
         optimizer.step()
         if scheduler is not None:
             scheduler.step()
+        if args.lambda_teacher > 0 and q_teacher_current is not None:
+            teacher_decay = max(0.0, min(0.9999, args.teacher_ema_decay))
+            teacher_detached = q_teacher_current.detach()
+            if q_teacher is None:
+                q_teacher = teacher_detached
+            else:
+                q_teacher = teacher_decay * q_teacher + (
+                    1.0 - teacher_decay
+                ) * teacher_detached
 
         q_eval = fused_assignment_q(
             q1,
@@ -1012,6 +1198,19 @@ def print_setting(args):
     print("lambda_util   : {}".format(args.lambda_util))
     print("util_min_mass : {}".format(args.util_min_mass))
     print("util_start    : {}".format(args.util_start_epoch))
+    print("lambda_balance: {}".format(args.lambda_balance))
+    print("balance_start : {}".format(args.balance_start_epoch))
+    print("balance_source: {}".format(args.balance_source))
+    print("lambda_cap    : {}".format(args.lambda_capacity))
+    print("cap_min_mass  : {}".format(args.capacity_min_mass))
+    print("cap_max_mass  : {}".format(args.capacity_max_mass))
+    print("cap_start     : {}".format(args.capacity_start_epoch))
+    print("cap_source    : {}".format(args.capacity_source))
+    print("lambda_conf   : {}".format(args.lambda_confidence))
+    print("conf_start    : {}".format(args.confidence_start_epoch))
+    print("lambda_teacher: {}".format(args.lambda_teacher))
+    print("teacher_start : {}".format(args.teacher_start_epoch))
+    print("teacher_ema   : {}".format(args.teacher_ema_decay))
     print("center_sep    : {}".format(args.lambda_center_sep))
     print("center_margin : {}".format(args.center_sep_margin))
     print("center_start  : {}".format(args.center_sep_start_epoch))
@@ -1048,6 +1247,7 @@ def print_setting(args):
     print("rna_k_weights : {}".format(args.rna_k_weights))
     print("view2_weights : {}".format(args.second_k_weights))
     print("dropout       : {}".format(args.dropout))
+    print("backbone      : {}".format(args.backbone_type))
     print("learning rate : {}".format(args.lr))
     print("lr_decay_epoch: {}".format(args.lr_decay_epoch))
     print("lr_decay_gamma: {}".format(args.lr_decay_gamma))

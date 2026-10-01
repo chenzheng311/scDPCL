@@ -15,10 +15,10 @@ DATASETS = ("PBMC-10k", "PBMC-3k", "BMNC")
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Run one organized scDPCL experiment.")
-    parser.add_argument("--dataset", choices=DATASETS, required=True)
+    parser.add_argument("--dataset", choices=(*DATASETS, "all"), default="all")
     parser.add_argument(
         "--profile",
-        choices=("two_group", "unified", "legacy_tuned"),
+        choices=("two_group",),
         default="two_group",
     )
     parser.add_argument("--mode", choices=("optimized", "original"), default="optimized")
@@ -34,7 +34,7 @@ def main():
         sys.executable,
         str(REPRODUCE_SCRIPT),
         "--datasets",
-        args.dataset,
+        ",".join(DATASETS) if args.dataset == "all" else args.dataset,
         "--mode",
         args.mode,
         "--profile",
@@ -49,7 +49,7 @@ def main():
     if args.reuse_original_pretrain:
         command.append("--reuse_original_pretrain")
 
-    return subprocess.call(command, cwd=str(RELEASE_ROOT.parent))
+    return subprocess.call(command, cwd=str(RELEASE_ROOT))
 
 
 if __name__ == "__main__":

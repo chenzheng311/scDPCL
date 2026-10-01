@@ -54,11 +54,11 @@ def notebook(dataset, description):
             "from pathlib import Path\n\n"
             "def find_project_root(start):\n"
             "    for path in (start, *start.parents):\n"
-            "        if (path / 'model' / 'main_dpcl.py').is_file() and (path / 'scDPCL_release').is_dir():\n"
+            "        if (path / 'src' / 'main_dpcl.py').is_file() and (path / 'run.py').is_file():\n"
             "            return path\n"
-            "    raise FileNotFoundError('无法定位 scMDCL-main 项目根目录')\n\n"
+            "    raise FileNotFoundError('无法定位 scDPCL 仓库根目录')\n\n"
             "PROJECT_ROOT = find_project_root(Path.cwd().resolve())\n"
-            "RELEASE_ROOT = PROJECT_ROOT / 'scDPCL_release'\n"
+            "RELEASE_ROOT = PROJECT_ROOT\n"
             "os.chdir(PROJECT_ROOT)\n"
             f"DATASET = {dataset!r}\n"
             "PROFILE = 'two_group'\n"
@@ -72,8 +72,8 @@ def notebook(dataset, description):
             "print(f\"cells={info['cells']:,}, clusters={info['clusters']}\")\n"
             "print(f\"RNA dim={info['rna_dim']}, {info['second_view']} dim={info['second_dim']}\")\n"
             "print('available k:', info['available_k'])\n"
-            "print('two-group reference ARI:', info['two_group_best_ari'])\n"
-            "print('active clusters:', info['two_group_active_clusters'])\n"
+            "print('two-group reference ARI:', info['reported_ari'])\n"
+            "print('active clusters:', info['active_clusters'])\n"
         ),
         markdown("## 1. 输入检查\n\n下面只检查数据、权重和完整命令，不启动训练。"),
         code(

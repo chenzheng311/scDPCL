@@ -1,0 +1,2 @@
+# Preserve exact delivery bytes so SHA-256 checks work across platforms.
+* -text

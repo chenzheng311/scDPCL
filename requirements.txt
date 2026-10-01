@@ -1,0 +1,11 @@
+# Captured from local sedrenv on 2026-10-01; Python 3.11.3.
+# The CUDA build is recorded separately in environment/runtime.json.
+torch==2.1.0
+numpy==1.26.4
+scipy==1.14.1
+scikit-learn==1.7.0
+tqdm==4.65.0
+matplotlib==3.9.2
+munkres==1.1.4
+joblib==1.5.2
+threadpoolctl==3.5.0

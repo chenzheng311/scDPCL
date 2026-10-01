@@ -1,0 +1,20 @@
+{
+  "PBMC-10k": {
+    "profile": "two_group",
+    "original_run": "reproduction_selected_20261001_141418",
+    "log": "reference_results/PBMC-10k/training.log",
+    "note": "Latest recorded run on 2026-10-01."
+  },
+  "PBMC-3k": {
+    "profile": "two_group",
+    "original_run": "unified_final_20260615",
+    "log": "reference_results/PBMC-3k/training.log",
+    "note": "PBMC-3k/BMNC current settings are identical to their earlier shared-configuration validation."
+  },
+  "BMNC": {
+    "profile": "two_group",
+    "original_run": "unified_final_20260615",
+    "log": "reference_results/BMNC/training.log",
+    "note": "PBMC-3k/BMNC current settings are identical to their earlier shared-configuration validation."
+  }
+}

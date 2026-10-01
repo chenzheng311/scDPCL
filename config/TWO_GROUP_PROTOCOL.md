@@ -61,22 +61,33 @@ Allowed differences:
 | BMNC | 100 | 25 | 0.001 |
 
 Verified PBMC-3k result: raw ARI 0.625453; recovered ARI 0.677099 with
-16/16 active clusters.
+16/16 active clusters. BMNC best ARI is 0.742072 with 27/27 active clusters.
+
+The complete 88 arguments per dataset, including implicit defaults, are listed in
+[the full parameter table](../FULL_PARAMETERS.md) and
+[the parameter CSV](ALL_PARAMETERS.csv). Current settings use beta=gamma=0;
+PBMC-10k has n_private=0. These choices disable the corresponding terms/components
+even though they remain implemented in the model.
+
+Reference logs and predictions are in `reference_results/<dataset>/`.
+Best-epoch selection uses reference-label ARI. Pretraining weights are included,
+but final trained model state dictionaries were not saved by the original code.
 
 ## Reproduction
 
 ```powershell
-conda activate sedrenv
-cd E:\code\scMDCL-main
+git clone https://github.com/chenzheng311/scDPCL.git
+cd scDPCL
+# Activate a Python 3.11 environment with requirements.txt installed.
 
-python tutorials\scdpcl_reproduction\run_all.py --profile two_group --dry_run
-python tutorials\scdpcl_reproduction\run_all.py --profile two_group
+python run.py --dataset all --profile two_group --dry-run
+python run.py --dataset all --profile two_group
 ```
 
 Individual datasets:
 
 ```powershell
-python tutorials\scdpcl_reproduction\tutorial_pbmc10k.py --profile two_group
-python tutorials\scdpcl_reproduction\tutorial_pbmc3k.py --profile two_group
-python tutorials\scdpcl_reproduction\tutorial_bmnc.py --profile two_group
+python run.py --dataset PBMC-10k --profile two_group
+python run.py --dataset PBMC-3k --profile two_group
+python run.py --dataset BMNC --profile two_group
 ```

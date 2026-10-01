@@ -2,6 +2,70 @@ import torch
 from torch import nn
 
 
+class MLPEncoder(nn.Module):
+    """Simple feature only encoder used for strong ablation baselines."""
+
+    def __init__(self, n_input, n_hidden1, n_hidden2, n_z, dropout):
+        super(MLPEncoder, self).__init__()
+        self.net = nn.Sequential(
+            nn.Linear(n_input, n_hidden1),
+            nn.Tanh(),
+            nn.Dropout(dropout),
+            nn.Linear(n_hidden1, n_hidden2),
+            nn.Tanh(),
+            nn.Dropout(dropout),
+            nn.Linear(n_hidden2, n_z),
+        )
+        self.s = nn.Sigmoid()
+
+    def forward(self, x, adj):
+        z = self.net(x)
+        z_adj = self.s(torch.mm(z, z.t()))
+        return z, z_adj
+
+
+class MLPDecoder(nn.Module):
+    """Simple feature only decoder with the same interface as IGAE."""
+
+    def __init__(self, n_input, n_hidden1, n_hidden2, n_z):
+        super(MLPDecoder, self).__init__()
+        self.net = nn.Sequential(
+            nn.Linear(n_z, n_hidden1),
+            nn.Tanh(),
+            nn.Linear(n_hidden1, n_hidden2),
+            nn.Tanh(),
+            nn.Linear(n_hidden2, n_input),
+            nn.Tanh(),
+        )
+        self.s = nn.Sigmoid()
+
+    def forward(self, z, adj):
+        z_hat = self.net(z)
+        z_adj_hat = self.s(torch.mm(z_hat, z_hat.t()))
+        return z_hat, z_adj_hat
+
+
+class MLPAE(nn.Module):
+    """MLP autoencoder that ignores graph propagation.
+
+    It keeps the encoder and decoder call signatures compatible with IGAE.
+    """
+
+    def __init__(
+        self,
+        n_input,
+        n_z,
+        enc_hidden1=256,
+        enc_hidden2=128,
+        dec_hidden1=128,
+        dec_hidden2=256,
+        dropout=0.0,
+    ):
+        super(MLPAE, self).__init__()
+        self.encoder = MLPEncoder(n_input, enc_hidden1, enc_hidden2, n_z, dropout)
+        self.decoder = MLPDecoder(n_input, dec_hidden1, dec_hidden2, n_z)
+
+
 class DisentangleHead(nn.Module):
     """Split an IGAE embedding into shared and private representations."""
 

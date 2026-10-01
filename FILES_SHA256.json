@@ -1,0 +1,556 @@
+{
+  "algorithm": "SHA-256",
+  "scope": "Repository delivery files; excludes .git, generated outputs, bytecode and dynamic verification reports.",
+  "excluded_directories": [
+    ".git",
+    "__pycache__",
+    "output"
+  ],
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 83,
+      "sha256": "e3c52ad91159c91b4731c2aa63d98eb4e75fab5b1054ad196ebd089ae401b2b4"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 139,
+      "sha256": "843fe61c58f01ec307c36d5625c11cdcc80c9eeecddf936dc0fd992fa90182c6"
+    },
+    {
+      "path": "assets/framework.png",
+      "bytes": 276593,
+      "sha256": "b60d6740836502fcd17fc797fc9407dc5ec97e62d1567b0510193f8af5362e04"
+    },
+    {
+      "path": "baseline/data_loader.py",
+      "bytes": 3170,
+      "sha256": "608599a9e9e52e6938292d52a61e6210504828c7b33a6884b39e58f4b526dc08"
+    },
+    {
+      "path": "baseline/encoder.py",
+      "bytes": 3164,
+      "sha256": "ef27499235b9850665ea4ab3c0d3454b2aff073767e7d8aba17ab31c470c72cf"
+    },
+    {
+      "path": "baseline/main.py",
+      "bytes": 7056,
+      "sha256": "bf718f8216d4e12c22799cd6072faecb1258a1bdf300ea00431153c53a8f6d80"
+    },
+    {
+      "path": "baseline/ops_loss.py",
+      "bytes": 3130,
+      "sha256": "44bd3a8b102b5e1ff4ba7c0892b0d66ede782e654f65d17fa828051fc2335d95"
+    },
+    {
+      "path": "baseline/opt.py",
+      "bytes": 1721,
+      "sha256": "0b99ed6efdf88aa914ee6b0bc9eb5ea9a39b29989a69516bc6ef09b928f54d78"
+    },
+    {
+      "path": "baseline/scMDCL.py",
+      "bytes": 1671,
+      "sha256": "f3070532328c1b46eb8b6bdf44dd68073ec941eae40cc402aef4ad6cd7e55895"
+    },
+    {
+      "path": "baseline/utils.py",
+      "bytes": 4520,
+      "sha256": "89890f9d111236766c21e6ec1285c4462b2e6fe7780bb057a2a1fdcdd1677c17"
+    },
+    {
+      "path": "config/ALL_PARAMETERS.csv",
+      "bytes": 13707,
+      "sha256": "467a486b55b1e14b42b975106ba644fc9c723ccc9f268e9ec6244af71ec78afa"
+    },
+    {
+      "path": "config/datasets.json",
+      "bytes": 1942,
+      "sha256": "12afceb136171d91eace4434ef369d843933882127cabbcd2a5d9edfb64f0220"
+    },
+    {
+      "path": "config/export_parameters.py",
+      "bytes": 8326,
+      "sha256": "e14819a61349281e93d8ed9d19227dc1ffd86df70413d88c9ceb8309318564ea"
+    },
+    {
+      "path": "config/parameters/two_group/BMNC.json",
+      "bytes": 15435,
+      "sha256": "62ec2613e5c564d39c9039cf06e4c26f12902bd846c6ef27a5afc2531569b041"
+    },
+    {
+      "path": "config/parameters/two_group/commands.txt",
+      "bytes": 5038,
+      "sha256": "004f65bf692ffc627971e47b38edfcf87f386e3880e729f301f9813a8d09964d"
+    },
+    {
+      "path": "config/parameters/two_group/PBMC-10k.json",
+      "bytes": 15387,
+      "sha256": "3245484ec1069ad735f74b3d87a5845935c51ef39446c5b3a95ac14855102fa3"
+    },
+    {
+      "path": "config/parameters/two_group/PBMC-3k.json",
+      "bytes": 15467,
+      "sha256": "7e085cb64958003325549577df1b6bff26a86046b8dedd01d7c8bcba3167d926"
+    },
+    {
+      "path": "config/reproduce.py",
+      "bytes": 15652,
+      "sha256": "96d7080d8f1e5a56e48133636d27afa8fdce7e3588639a78dac958f86d1e8f13"
+    },
+    {
+      "path": "config/TWO_GROUP_PROTOCOL.md",
+      "bytes": 3109,
+      "sha256": "cd7910a8488e061877027621d21ce5536666f2a8caa9103189f2895312c2e546"
+    },
+    {
+      "path": "create_tutorials.py",
+      "bytes": 5438,
+      "sha256": "863e36927b8f7339dbc230ab4a7893cf1f40433ae648d763ae3eae97ba0a993c"
+    },
+    {
+      "path": "DELIVERY_CHECKS.md",
+      "bytes": 882,
+      "sha256": "3260c3c774ad461da1d47c34da1a5b85c18f3dc3a4c35fda56dc3205edc96ee3"
+    },
+    {
+      "path": "environment/installed_packages.json",
+      "bytes": 10346,
+      "sha256": "5e6bc6f14c7107a6d6e1ea6e1b1d76da8aff2bcebd8cd50326534a06cd4f71c7"
+    },
+    {
+      "path": "environment/runtime.json",
+      "bytes": 764,
+      "sha256": "b0af8281d6e1374caeefeed35abb478d0287c0a27acb0656744fbd759d7815fd"
+    },
+    {
+      "path": "FULL_PARAMETERS.md",
+      "bytes": 6158,
+      "sha256": "dce1e9de626783b05d11eafd1fee3702acc45cd27fca10a40ed872f743d8f884"
+    },
+    {
+      "path": "input/BMNC/ATAC_cos_10.npz",
+      "bytes": 200531,
+      "sha256": "2b2238f0233e9768f21cad8210bc3f74c1baa0bb80157dd96143d27b1ada8b01"
+    },
+    {
+      "path": "input/BMNC/ATAC_cos_15.npz",
+      "bytes": 290757,
+      "sha256": "9b987d75191753eb9cdd006d20a8f7a77875e0074d5acab24e365eb86b37e962"
+    },
+    {
+      "path": "input/BMNC/ATAC_cos_20.npz",
+      "bytes": 376222,
+      "sha256": "fe6b5a09141bbc92d287a1c97c0299fedb5495a9dda56a0f07586deb68466519"
+    },
+    {
+      "path": "input/BMNC/ATAC_cos_30.npz",
+      "bytes": 547391,
+      "sha256": "a9e7196b7da026b96e431e2d682e030860c1ac6dc76004cd476b2ef6771d3887"
+    },
+    {
+      "path": "input/BMNC/ATAC_cos_5.npz",
+      "bytes": 109710,
+      "sha256": "7376043ec7fab8bda850add8e46f449d46dfe8e0efc99c303f128d83cf8e862c"
+    },
+    {
+      "path": "input/BMNC/ATAC_euc_10.npz",
+      "bytes": 200844,
+      "sha256": "efad8afe83ddde292d74f7089525874e489d112c84bc26ed08c73edf1ef6a380"
+    },
+    {
+      "path": "input/BMNC/ATAC_euc_20.npz",
+      "bytes": 376469,
+      "sha256": "b7a988a6837edb2ddff0efaba48ec18d2877a2c3bdf48516e6ac2055d108e610"
+    },
+    {
+      "path": "input/BMNC/ATAC_fea.npy",
+      "bytes": 1840528,
+      "sha256": "0f05b291aa18956d4786656affdc260eeaa89036e317da9231827195c0096ce6"
+    },
+    {
+      "path": "input/BMNC/label.npy",
+      "bytes": 73744,
+      "sha256": "3670920190a0040c23b1fe20f96f48613dde4feb58eeaba8afdd54c6d2e5401b"
+    },
+    {
+      "path": "input/BMNC/RNA_cos_10.npz",
+      "bytes": 201830,
+      "sha256": "cf802d26f0e05a974f66f9cf4108d286f22aa702e8ac7a401fe30031c00c2647"
+    },
+    {
+      "path": "input/BMNC/RNA_cos_15.npz",
+      "bytes": 291885,
+      "sha256": "aed0fe1dcfc3064d9f4830e2b966fa1b96e70aa845dfc26d8f9980bcdba58379"
+    },
+    {
+      "path": "input/BMNC/RNA_cos_20.npz",
+      "bytes": 377142,
+      "sha256": "c8ae8deb39015ea3c3a1b1c7c5a8f21cd8fd4c5329c960921ee3158b5ec8c62a"
+    },
+    {
+      "path": "input/BMNC/RNA_cos_30.npz",
+      "bytes": 547712,
+      "sha256": "ec6276cda5bbfe38766bba5bccdae594c8700afc06003856984aca5876056b06"
+    },
+    {
+      "path": "input/BMNC/RNA_cos_5.npz",
+      "bytes": 111308,
+      "sha256": "56c4cc7872510ec2f5d9d0a07343b568f28bcc1ea6b4f60630004326e6eab833"
+    },
+    {
+      "path": "input/BMNC/RNA_euc_10.npz",
+      "bytes": 203163,
+      "sha256": "49a6412b9e31620fe28258a8d3a621fb78b897594ec9caa97c729fba6986547e"
+    },
+    {
+      "path": "input/BMNC/RNA_euc_20.npz",
+      "bytes": 384911,
+      "sha256": "9a385c9ae170aff6cd06cf89790e49912a286f8011d4344dedb12cdd03b1d6d7"
+    },
+    {
+      "path": "input/BMNC/RNA_fea.npy",
+      "bytes": 3680928,
+      "sha256": "8fead6d4635bcfba3374d8439d25744485a1aa3b979e7e9f87032c432aa4ca69"
+    },
+    {
+      "path": "input/BMNC/RNA_pca100.joblib",
+      "bytes": 3035882,
+      "sha256": "a48699b2381515a1d052757ff81533b4bfa2fc8755dd70200eca27da96c40856"
+    },
+    {
+      "path": "input/PBMC-10k/ATAC_euc_10.npz",
+      "bytes": 222150,
+      "sha256": "ef6cdfb6f389a8d3f7b819eeced92b6b0c9848892a174a35c86fe0865b43583c"
+    },
+    {
+      "path": "input/PBMC-10k/ATAC_euc_15.npz",
+      "bytes": 325588,
+      "sha256": "479506179add4a4914ec0db804e3f4e6024f5ad0a1a2120c2d6a0927edde8502"
+    },
+    {
+      "path": "input/PBMC-10k/ATAC_euc_20.npz",
+      "bytes": 425493,
+      "sha256": "fbf47a320334d2a5c975491a31af2d979fa59d12c29c379b402767f09a007d7f"
+    },
+    {
+      "path": "input/PBMC-10k/ATAC_euc_25.npz",
+      "bytes": 526737,
+      "sha256": "e132037dcf13cf51a513d948f50a5919663a88c52025e6732e02906cd88d4741"
+    },
+    {
+      "path": "input/PBMC-10k/ATAC_fea.npy",
+      "bytes": 3852528,
+      "sha256": "ae55217f7291b63522a2a029ef89dd6053086a1f162c99d3b7798d1e09cf7327"
+    },
+    {
+      "path": "input/PBMC-10k/cell_type.npy",
+      "bytes": 1192,
+      "sha256": "fec4bfbf6731dd742757c7816d1efbdf84568519328808a61ea941dd9a2683c3"
+    },
+    {
+      "path": "input/PBMC-10k/label.npy",
+      "bytes": 38652,
+      "sha256": "dd1dae6ec03650f85d6c98f1f32b4979067e60bcc1e6da9d99d2da604d1a1d29"
+    },
+    {
+      "path": "input/PBMC-10k/RNA_euc_10.npz",
+      "bytes": 204593,
+      "sha256": "86bb39c07d2a1337e9eb8e1cf95cb840799a131189b45e216ba88e730002487b"
+    },
+    {
+      "path": "input/PBMC-10k/RNA_euc_15.npz",
+      "bytes": 293234,
+      "sha256": "35298bf3f90d036ed73b09a240d2096c9d1bfec1cf719485a9ada58e0831fba0"
+    },
+    {
+      "path": "input/PBMC-10k/RNA_euc_20.npz",
+      "bytes": 378733,
+      "sha256": "c63c7f97d045001ba130dd90ff8dda679d314f4836af39c8e2f921862857aea9"
+    },
+    {
+      "path": "input/PBMC-10k/RNA_euc_25.npz",
+      "bytes": 464136,
+      "sha256": "61e521e7af277f1198ca41d0f99fd111607a9bf345d840c2c476b860dd7e19b4"
+    },
+    {
+      "path": "input/PBMC-10k/RNA_fea.npy",
+      "bytes": 3852528,
+      "sha256": "50e84f7b929d4cd9ebbbb35492a48d441f2c148df2ce6da6990d99c1a6afcd52"
+    },
+    {
+      "path": "input/PBMC-3k/ATAC_euc_10.npz",
+      "bytes": 73568,
+      "sha256": "46560630a73e7308170491b2d5a4d74a7c05dfd7dd40215b8022751895bf45df"
+    },
+    {
+      "path": "input/PBMC-3k/ATAC_euc_20.npz",
+      "bytes": 132489,
+      "sha256": "3d100c4f26b925ea94cdbcf560d4dd4cf23499c47e0ba7970a9201cc3205a5cf"
+    },
+    {
+      "path": "input/PBMC-3k/ATAC_fea.npy",
+      "bytes": 737480,
+      "sha256": "93873ea81d574fa2216ab48195d7ba7eaae7ffffb0fe20f5dc1858a0d8c63684"
+    },
+    {
+      "path": "input/PBMC-3k/label.npy",
+      "bytes": 30224,
+      "sha256": "a9ff9fcb014af0fecbfa4ea3e5e97d248851d60f9536b23a045de0c2efbfef87"
+    },
+    {
+      "path": "input/PBMC-3k/RNA_euc_10.npz",
+      "bytes": 68765,
+      "sha256": "dafe4068d1fe0a468c11a84dd118796693e30bb8a9b8969a1346ad6ea1c6654a"
+    },
+    {
+      "path": "input/PBMC-3k/RNA_euc_20.npz",
+      "bytes": 129794,
+      "sha256": "6b7e5d129f5fbc657afcfead650b31f22b4b38f88979a21fd29bc7a1a35317c0"
+    },
+    {
+      "path": "input/PBMC-3k/RNA_fea.npy",
+      "bytes": 1504928,
+      "sha256": "ad73a8e6dcb13352479de43ffcf83f691402806e2c9e186f970b7eff4d6185e3"
+    },
+    {
+      "path": "input/PBMC-3k/RNA_pca100.joblib",
+      "bytes": 384226,
+      "sha256": "7a79aa91e919856c514ca6c99311331bb6268094b7e26eb6f5671c8dbfdb4526"
+    },
+    {
+      "path": "model_pretrained/BMNC_dpcl_v8_hard_seed0_d0p4_k10_s16_p4_sepcenters_legacy.pkl",
+      "bytes": 837036,
+      "sha256": "15622bacb7898fda8746dccb68b76683d3d6f7a01c1221f03fff9f5f286de545"
+    },
+    {
+      "path": "model_pretrained/BMNC_pretrain.pkl",
+      "bytes": 832024,
+      "sha256": "b81a7d1f17b675451d0e5b7612b05a4244fa65e6b87b114cc5509dc07805f1a3"
+    },
+    {
+      "path": "model_pretrained/PBMC-10k_pretrain.pkl",
+      "bytes": 983963,
+      "sha256": "d326ebb186c76ed9bbbe0fde42ea0a1d4d8c7e136183e670b60774f9306b26f1"
+    },
+    {
+      "path": "model_pretrained/PBMC-3k_dpcl_v8_hard_seed0_d0p4_k10_s16_p4_sepcenters_legacy.pkl",
+      "bytes": 884846,
+      "sha256": "07ce4c5fbadf71de4beb3c5c6542c36df53c6bd496f68e7112dbe73a0dc76d75"
+    },
+    {
+      "path": "model_pretrained/PBMC-3k_pretrain.pkl",
+      "bytes": 879566,
+      "sha256": "9563edcf1668001e2c929c439040e81c78ff5097dc74a9b3e533e33ab0ee03ec"
+    },
+    {
+      "path": "model_pretrained/README.md",
+      "bytes": 691,
+      "sha256": "b6b5de5b9b18403e29a857d876f48acc31d91a03292a29a03f5fed93fa813590"
+    },
+    {
+      "path": "outputs/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "provenance/source_files.json",
+      "bytes": 19426,
+      "sha256": "f0b47c2e8c82963a3524064d857252f79e4bdcbcfed12e152b55d56732ec6b34"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7768,
+      "sha256": "9df0e69b1836b0ba0bbdc247ea17be1fec2efb93e5722b75aa50ad75fcd46ad5"
+    },
+    {
+      "path": "reference_results/BMNC/seed0_label.npy",
+      "bytes": 73744,
+      "sha256": "ae7e7b910b46b0f459be176c9a69a540dea090a22e6057a5cabc1b7c599ee0f3"
+    },
+    {
+      "path": "reference_results/BMNC/seed0_label_final.npy",
+      "bytes": 73744,
+      "sha256": "67a553efed5a48dea99377047123cdcb3cbeeca4366e650b722db5e3459b0c76"
+    },
+    {
+      "path": "reference_results/BMNC/seed0_label_final_recovered.npy",
+      "bytes": 73744,
+      "sha256": "fe682657f403ca9b63eb1f60cbb04060541fb0e444855708406685a67508c16e"
+    },
+    {
+      "path": "reference_results/BMNC/seed0_z.npy",
+      "bytes": 589056,
+      "sha256": "41aa96f622f87a8aa6def743b726f28de1580b2affef3d4a2601bd1ea546cfc5"
+    },
+    {
+      "path": "reference_results/BMNC/seed0_z_final.npy",
+      "bytes": 589056,
+      "sha256": "4e326c2355b38da5ace9e4a22484890b0362e4d0a5d5200877db04d313a8857e"
+    },
+    {
+      "path": "reference_results/BMNC/summary.json",
+      "bytes": 1397,
+      "sha256": "0a80b048617af2ca765ffb6bf857176479e014d8884c713c159fb4166c943bfb"
+    },
+    {
+      "path": "reference_results/BMNC/training.log",
+      "bytes": 484993,
+      "sha256": "782416eda0f0a83e9b3f124cd83c6ac600731974a998902207aae006122c69b0"
+    },
+    {
+      "path": "reference_results/index.json",
+      "bytes": 738,
+      "sha256": "efd19ada6be8d31d39d762912d299345e6050b317f18a1a3d66937cb52f26f69"
+    },
+    {
+      "path": "reference_results/PBMC-10k/seed0_label.npy",
+      "bytes": 77176,
+      "sha256": "1632cfeaf8bab612ff00e6fd83b25d54c892ecc59becebebd85944540b73397a"
+    },
+    {
+      "path": "reference_results/PBMC-10k/seed0_label_final.npy",
+      "bytes": 77176,
+      "sha256": "38f45b6faad644738b45b7513c518b4a0515e58b51fe9ee357e40018a674c132"
+    },
+    {
+      "path": "reference_results/PBMC-10k/seed0_label_final_recovered.npy",
+      "bytes": 77176,
+      "sha256": "c2b73a8ff510df411f0c43fe571d382313f8299234ffd9c414ecdf1baa61cf22"
+    },
+    {
+      "path": "reference_results/PBMC-10k/seed0_label_recovered.npy",
+      "bytes": 77176,
+      "sha256": "49ce23022056864f42ba3ad2929546fc4a458b92c6413cfa4fdeba9aaf33c503"
+    },
+    {
+      "path": "reference_results/PBMC-10k/seed0_z.npy",
+      "bytes": 770608,
+      "sha256": "384460db899e143445eb3008585739974ba8547d9c68d90d8b152bd3203dc3cb"
+    },
+    {
+      "path": "reference_results/PBMC-10k/seed0_z_final.npy",
+      "bytes": 770608,
+      "sha256": "e6ab5046b97fb22355171d568c788b131b101b0e26c00fe2c0f601938703dd86"
+    },
+    {
+      "path": "reference_results/PBMC-10k/summary.json",
+      "bytes": 1438,
+      "sha256": "eea7348e40d5e89db3663cb4458e356f762e33405842992a5506f502db8e894d"
+    },
+    {
+      "path": "reference_results/PBMC-10k/training.log",
+      "bytes": 487522,
+      "sha256": "ca57a4a7c3f83c59e65687e707d865fad80e664b1b31e2e7d68428173d50a543"
+    },
+    {
+      "path": "reference_results/PBMC-3k/seed0_label.npy",
+      "bytes": 30224,
+      "sha256": "98157008d40947a891ced17f3067735f809bb593f7c2f1a34d9ab9db792a7464"
+    },
+    {
+      "path": "reference_results/PBMC-3k/seed0_label_final.npy",
+      "bytes": 30224,
+      "sha256": "f126e0d85dfc4ae678f88dfbcbc7a227dd4b56b0e59ad24a9bc6dd68b159f0b2"
+    },
+    {
+      "path": "reference_results/PBMC-3k/seed0_label_final_recovered.npy",
+      "bytes": 30224,
+      "sha256": "07fab3c9f0afc1e68c7cb553f418b3ca2e47706fbe86c909ea943414632b7e5b"
+    },
+    {
+      "path": "reference_results/PBMC-3k/seed0_label_recovered.npy",
+      "bytes": 30224,
+      "sha256": "958f6d5800ebf3f20ac9a917c5c300dfa695176f400af0fcfd35dc68d223d161"
+    },
+    {
+      "path": "reference_results/PBMC-3k/seed0_z.npy",
+      "bytes": 240896,
+      "sha256": "d1f398a38785a439d666bda829258adb232ba9998e02d3a07f04dd5c7ef5b77c"
+    },
+    {
+      "path": "reference_results/PBMC-3k/seed0_z_final.npy",
+      "bytes": 240896,
+      "sha256": "c88847b88161cb3e4eccbcd84d14264118b493384f3b232064219c27388a6436"
+    },
+    {
+      "path": "reference_results/PBMC-3k/summary.json",
+      "bytes": 1529,
+      "sha256": "4bcc7865f6aadd3f25695b3267da4ab20db6625ea1ff7ad1d6fde343ea2b6527"
+    },
+    {
+      "path": "reference_results/PBMC-3k/training.log",
+      "bytes": 311525,
+      "sha256": "45e7b77a91f1b7a5aefe7da23cee46d3d73d2576e742cb89e56d5b262cd6c151"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 282,
+      "sha256": "78ede5eaafa93cdd24e6e53b2950b7670adfea220da66816f0301b46f0e27b45"
+    },
+    {
+      "path": "run.py",
+      "bytes": 1674,
+      "sha256": "b0ad1686ce7ced5020fad55f148110d40095fa2ad387a1e5b7ab066e59f72912"
+    },
+    {
+      "path": "src/data_loader.py",
+      "bytes": 3170,
+      "sha256": "608599a9e9e52e6938292d52a61e6210504828c7b33a6884b39e58f4b526dc08"
+    },
+    {
+      "path": "src/encoder.py",
+      "bytes": 3164,
+      "sha256": "ef27499235b9850665ea4ab3c0d3454b2aff073767e7d8aba17ab31c470c72cf"
+    },
+    {
+      "path": "src/encoder_dpcl.py",
+      "bytes": 7480,
+      "sha256": "7bc09c8d288ce69aeed0053a0acf45f31b58cf5013044ed586fb1c8b3c7bd341"
+    },
+    {
+      "path": "src/main_dpcl.py",
+      "bytes": 48938,
+      "sha256": "33b7726b7015611b115b024424580952cf0f5c51766e5d019f344a3951f43ac8"
+    },
+    {
+      "path": "src/ops_loss_dpcl.py",
+      "bytes": 8071,
+      "sha256": "7d89f8f8c935f191f69f33ce93bcb050b0574b73391906927be60615edd6bc8e"
+    },
+    {
+      "path": "src/scDPCL.py",
+      "bytes": 3408,
+      "sha256": "6cd922b0092635ef9f09562ddf260e8a2e1467d48a222b8fa333f98114c842e3"
+    },
+    {
+      "path": "src/utils_dpcl.py",
+      "bytes": 7678,
+      "sha256": "2064c5dbc24a3fc2c58817bee511220eed96ef7c46b2c947efc613c58e039238"
+    },
+    {
+      "path": "tutorial/tutorial_bmnc.ipynb",
+      "bytes": 4750,
+      "sha256": "d525fdda969242c7ce4facc76e1998792e10683b8f5ad0f0f24d8aa890e2bd3f"
+    },
+    {
+      "path": "tutorial/tutorial_pbmc10k.ipynb",
+      "bytes": 4766,
+      "sha256": "dd27b8df52fa1fea146815bda56a8a5308e34cf1cd3c7d5a5a3df4e5a4554643"
+    },
+    {
+      "path": "tutorial/tutorial_pbmc3k.ipynb",
+      "bytes": 4762,
+      "sha256": "033681215f753589aab462bffdd51f486e3db971e7feaf94153895738713295b"
+    },
+    {
+      "path": "verification/README.md",
+      "bytes": 440,
+      "sha256": "e6707b2e378775fe3e5f334bdb4dcdf1ceb4b01b40e1c8ffb1ac3b4424139a55"
+    },
+    {
+      "path": "verify_release.py",
+      "bytes": 7999,
+      "sha256": "9377a2ae281f58db4fea81e4fd39b3d03463bc8af198cadd44661dcf776a5ea6"
+    }
+  ]
+}

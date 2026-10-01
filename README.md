@@ -6,13 +6,6 @@
 
 scDPCL integrates matched RNA and ATAC profiles for single-cell clustering. This repository contains the standalone reproduction package and the current two-group configuration.
 
-## 当前版本
-
-本版本更新于 2026-10-01，**只保留最新正在使用的 `two_group` 参数**：PBMC-10k 单独一组，PBMC-3k 和 BMNC 共用另一组，仅输入维度和学习率不同。
-
-包含完整模型代码、三个数据集的预处理输入、所需预训练权重、全部 88 项命令行参数、运行环境记录、对应实验日志与聚类结果。整个文件夹可以单独复制使用，不依赖上一级项目。
-
-**权重说明：**原程序只保存预训练权重和聚类标签/嵌入，没有保存正式训练后的 best/final 模型权重。本包已归档现有预训练文件，可重新完成训练；此次整理未重跑完整训练。
 
 ## 运行
 
@@ -97,29 +90,7 @@ python verify_release.py
 
 依赖文件固定 Python 包版本；CUDA 构建信息单独记录于 `environment/runtime.json`，不保证不同平台自动安装相同 CUDA 构建。完整已安装包列表见 `environment/installed_packages.json`。Notebook 另需安装 Jupyter，CLI 不需要。
 
-## 当前配置对应结果
 
-| 数据集 | best ARI | 恢复后 ARI | 报告结果有效簇 |
-|---|---:|---:|---:|
-| PBMC-10k | 0.914055 | 0.920613 | 18/19 |
-| PBMC-3k | 0.625453 | 0.677099 | 16/16 |
-| BMNC | 0.742072 | — | 27/27 |
-
-记录在 `reference_results/<dataset>/`，每个数据集包含 `training.log`、`summary.json` 和现有 `seed0_*.npy`。
-
-PBMC-10k 来自今天的实际运行；PBMC-3k/BMNC 来自与当前参数完全相同的既有共享配置验证。来源见 `reference_results/index.json`。原始日志和 summary 保留当时的路径及运行名称，它们是记录而非执行依赖。
-
-best epoch 依据真实标签 ARI 选择，不能描述为完全无监督的模型选择。PBMC-10k 原始 best 标签为 16/19 簇，恢复后为 18/19。
-
-## 输出与核验
-
-正式运行输出到 `outputs/reproduction_selected_<时间>/`，含命令、完整参数 JSON、日志、summary 以及 `outputs/<dataset>/<dataset>/seed0_*.npy`。为兼容原模型，数据集目录嵌套两层。
-
-PBMC-3k/BMNC 的当前配置会重新预训练并覆盖本包 scDPCL 缓存。预训练缓存可能曾被其他实验覆盖，因此不能仅凭文件名把它归属于某次历史结果；本包按源文件保存哈希并检查权重兼容性。
-
-`python verify_release.py` 检查源码语法、当前三组参数、数据形状、权重兼容性、8 个模拟细胞的前向/反向计算、从外部工作目录启动，以及归档标签对应的 ARI。完整训练未重跑。`--check-hashes` 额外核对交付时文件哈希；修改源码或重训覆盖缓存后，相关哈希会变化。校验清单排除运行输出、字节码缓存和可重生成的 verification 报告。
-
-附带的 scMDCL 基线可用 `python run.py --dataset all --mode original --reuse-original-pretrain` 运行。其输出在本包 `output/<dataset>/`，随机种子行为沿用原代码；重做基线预训练会覆盖本包初始化权重，需保留时请先备份本包。
 
 ## 版本记录
 

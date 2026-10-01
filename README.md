@@ -59,17 +59,8 @@ scDPCL/
 
 ## 实际环境
 
-已核实的本机环境：Python 3.11.3、PyTorch 2.1.0（CUDA 12.1）、NumPy 1.26.4、SciPy 1.14.1、scikit-learn 1.7.0，显卡 NVIDIA GeForce RTX 4070 Ti SUPER。
+Python 3.11.3、PyTorch 2.1.0（CUDA 12.1）、NumPy 1.26.4、SciPy 1.14.1、scikit-learn 1.7.0
 
-新环境使用 Python 3.11，并安装随包依赖：
-
-```powershell
-python -m pip install -r requirements.txt
-python -c "import torch; print(torch.__version__, torch.version.cuda, torch.cuda.is_available())"
-python verify_release.py
-```
-
-依赖文件固定 Python 包版本；CUDA 构建信息单独记录于 `environment/runtime.json`，不保证不同平台自动安装相同 CUDA 构建。完整已安装包列表见 `environment/installed_packages.json`。Notebook 另需安装 Jupyter，CLI 不需要。
 
 
 

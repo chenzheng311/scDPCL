@@ -70,15 +70,15 @@ Each dataset directory should contain the preprocessed RNA and ATAC feature matr
 Take PBMC-10k as an example:
 
 ```bash
-python scDPCL_release/run.py --dataset PBMC-10k --dry-run
-python scDPCL_release/run.py --dataset PBMC-10k
+python scDPCL/run.py --dataset PBMC-10k --dry-run
+python scDPCL/run.py --dataset PBMC-10k
 ```
 
 The other benchmark datasets can be run in the same way:
 
 ```bash
-python scDPCL_release/run.py --dataset PBMC-3k
-python scDPCL_release/run.py --dataset BMNC
+python scDPCL/run.py --dataset PBMC-3k
+python scDPCL/run.py --dataset BMNC
 ```
 
 The default `two_group` profile uses one configuration for PBMC-10k and a shared configuration for PBMC-3k and BMNC. Additional profiles are available through `--profile unified` and `--profile legacy_tuned`. See `config/TWO_GROUP_PROTOCOL.md`, `config/UNIFIED_PROTOCOL.md`, and `config/datasets.json` for details.

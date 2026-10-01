@@ -1,0 +1,494 @@
+[
+  {
+    "source": "model/main_dpcl.py",
+    "destination": "src/main_dpcl.py",
+    "bytes": 48938,
+    "source_sha256": "33b7726b7015611b115b024424580952cf0f5c51766e5d019f344a3951f43ac8"
+  },
+  {
+    "source": "model/encoder_dpcl.py",
+    "destination": "src/encoder_dpcl.py",
+    "bytes": 7480,
+    "source_sha256": "7bc09c8d288ce69aeed0053a0acf45f31b58cf5013044ed586fb1c8b3c7bd341"
+  },
+  {
+    "source": "model/ops_loss_dpcl.py",
+    "destination": "src/ops_loss_dpcl.py",
+    "bytes": 8071,
+    "source_sha256": "7d89f8f8c935f191f69f33ce93bcb050b0574b73391906927be60615edd6bc8e"
+  },
+  {
+    "source": "model/scDPCL.py",
+    "destination": "src/scDPCL.py",
+    "bytes": 3408,
+    "source_sha256": "6cd922b0092635ef9f09562ddf260e8a2e1467d48a222b8fa333f98114c842e3"
+  },
+  {
+    "source": "model/utils_dpcl.py",
+    "destination": "src/utils_dpcl.py",
+    "bytes": 7678,
+    "source_sha256": "2064c5dbc24a3fc2c58817bee511220eed96ef7c46b2c947efc613c58e039238"
+  },
+  {
+    "source": "data_loader.py",
+    "destination": "src/data_loader.py",
+    "bytes": 3170,
+    "source_sha256": "608599a9e9e52e6938292d52a61e6210504828c7b33a6884b39e58f4b526dc08"
+  },
+  {
+    "source": "encoder.py",
+    "destination": "src/encoder.py",
+    "bytes": 3164,
+    "source_sha256": "ef27499235b9850665ea4ab3c0d3454b2aff073767e7d8aba17ab31c470c72cf"
+  },
+  {
+    "source": "main.py",
+    "destination": "baseline/main.py",
+    "bytes": 7056,
+    "source_sha256": "bf718f8216d4e12c22799cd6072faecb1258a1bdf300ea00431153c53a8f6d80"
+  },
+  {
+    "source": "opt.py",
+    "destination": "baseline/opt.py",
+    "bytes": 1721,
+    "source_sha256": "0b99ed6efdf88aa914ee6b0bc9eb5ea9a39b29989a69516bc6ef09b928f54d78"
+  },
+  {
+    "source": "encoder.py",
+    "destination": "baseline/encoder.py",
+    "bytes": 3164,
+    "source_sha256": "ef27499235b9850665ea4ab3c0d3454b2aff073767e7d8aba17ab31c470c72cf"
+  },
+  {
+    "source": "scMDCL.py",
+    "destination": "baseline/scMDCL.py",
+    "bytes": 1671,
+    "source_sha256": "f3070532328c1b46eb8b6bdf44dd68073ec941eae40cc402aef4ad6cd7e55895"
+  },
+  {
+    "source": "data_loader.py",
+    "destination": "baseline/data_loader.py",
+    "bytes": 3170,
+    "source_sha256": "608599a9e9e52e6938292d52a61e6210504828c7b33a6884b39e58f4b526dc08"
+  },
+  {
+    "source": "ops_loss.py",
+    "destination": "baseline/ops_loss.py",
+    "bytes": 3130,
+    "source_sha256": "44bd3a8b102b5e1ff4ba7c0892b0d66ede782e654f65d17fa828051fc2335d95"
+  },
+  {
+    "source": "utils.py",
+    "destination": "baseline/utils.py",
+    "bytes": 4520,
+    "source_sha256": "89890f9d111236766c21e6ec1285c4462b2e6fe7780bb057a2a1fdcdd1677c17"
+  },
+  {
+    "source": "scDPCL_release/config/datasets.json",
+    "destination": "config/datasets.json",
+    "bytes": 2544,
+    "source_sha256": "0a2a3573d475b8e92157af05f6f9045c778708ac1160eecbd7a92e65bd357923"
+  },
+  {
+    "source": "scDPCL_release/config/reproduce.py",
+    "destination": "config/reproduce.py",
+    "bytes": 14109,
+    "source_sha256": "214e1efe0cfbe7b217cf915acc43dbc7b229a16edf7ce1a60c3f71d9b283fad5"
+  },
+  {
+    "source": "scDPCL_release/config/TWO_GROUP_PROTOCOL.md",
+    "destination": "config/TWO_GROUP_PROTOCOL.md",
+    "bytes": 2410,
+    "source_sha256": "684fd22ad69722e1cff61ff4de97b8c1367c8680d4b6e83388979114ce80e078"
+  },
+  {
+    "source": "scDPCL_release/assets/framework.png",
+    "destination": "assets/framework.png",
+    "bytes": 276593,
+    "source_sha256": "b60d6740836502fcd17fc797fc9407dc5ec97e62d1567b0510193f8af5362e04"
+  },
+  {
+    "source": "scDPCL_release/run.py",
+    "destination": "run.py",
+    "bytes": 1592,
+    "source_sha256": "380ef10cb6781b4785fa0f8e8e9db56b5fb9385997291badffcfe670736fca8a"
+  },
+  {
+    "source": "input/PBMC-10k/ATAC_euc_10.npz",
+    "destination": "input/PBMC-10k/ATAC_euc_10.npz",
+    "bytes": 222150,
+    "source_sha256": "ef6cdfb6f389a8d3f7b819eeced92b6b0c9848892a174a35c86fe0865b43583c"
+  },
+  {
+    "source": "input/PBMC-10k/ATAC_euc_15.npz",
+    "destination": "input/PBMC-10k/ATAC_euc_15.npz",
+    "bytes": 325588,
+    "source_sha256": "479506179add4a4914ec0db804e3f4e6024f5ad0a1a2120c2d6a0927edde8502"
+  },
+  {
+    "source": "input/PBMC-10k/ATAC_euc_20.npz",
+    "destination": "input/PBMC-10k/ATAC_euc_20.npz",
+    "bytes": 425493,
+    "source_sha256": "fbf47a320334d2a5c975491a31af2d979fa59d12c29c379b402767f09a007d7f"
+  },
+  {
+    "source": "input/PBMC-10k/ATAC_euc_25.npz",
+    "destination": "input/PBMC-10k/ATAC_euc_25.npz",
+    "bytes": 526737,
+    "source_sha256": "e132037dcf13cf51a513d948f50a5919663a88c52025e6732e02906cd88d4741"
+  },
+  {
+    "source": "input/PBMC-10k/ATAC_fea.npy",
+    "destination": "input/PBMC-10k/ATAC_fea.npy",
+    "bytes": 3852528,
+    "source_sha256": "ae55217f7291b63522a2a029ef89dd6053086a1f162c99d3b7798d1e09cf7327"
+  },
+  {
+    "source": "input/PBMC-10k/cell_type.npy",
+    "destination": "input/PBMC-10k/cell_type.npy",
+    "bytes": 1192,
+    "source_sha256": "fec4bfbf6731dd742757c7816d1efbdf84568519328808a61ea941dd9a2683c3"
+  },
+  {
+    "source": "input/PBMC-10k/label.npy",
+    "destination": "input/PBMC-10k/label.npy",
+    "bytes": 38652,
+    "source_sha256": "dd1dae6ec03650f85d6c98f1f32b4979067e60bcc1e6da9d99d2da604d1a1d29"
+  },
+  {
+    "source": "input/PBMC-10k/RNA_euc_10.npz",
+    "destination": "input/PBMC-10k/RNA_euc_10.npz",
+    "bytes": 204593,
+    "source_sha256": "86bb39c07d2a1337e9eb8e1cf95cb840799a131189b45e216ba88e730002487b"
+  },
+  {
+    "source": "input/PBMC-10k/RNA_euc_15.npz",
+    "destination": "input/PBMC-10k/RNA_euc_15.npz",
+    "bytes": 293234,
+    "source_sha256": "35298bf3f90d036ed73b09a240d2096c9d1bfec1cf719485a9ada58e0831fba0"
+  },
+  {
+    "source": "input/PBMC-10k/RNA_euc_20.npz",
+    "destination": "input/PBMC-10k/RNA_euc_20.npz",
+    "bytes": 378733,
+    "source_sha256": "c63c7f97d045001ba130dd90ff8dda679d314f4836af39c8e2f921862857aea9"
+  },
+  {
+    "source": "input/PBMC-10k/RNA_euc_25.npz",
+    "destination": "input/PBMC-10k/RNA_euc_25.npz",
+    "bytes": 464136,
+    "source_sha256": "61e521e7af277f1198ca41d0f99fd111607a9bf345d840c2c476b860dd7e19b4"
+  },
+  {
+    "source": "input/PBMC-10k/RNA_fea.npy",
+    "destination": "input/PBMC-10k/RNA_fea.npy",
+    "bytes": 3852528,
+    "source_sha256": "50e84f7b929d4cd9ebbbb35492a48d441f2c148df2ce6da6990d99c1a6afcd52"
+  },
+  {
+    "source": "model_pretrained/PBMC-10k_pretrain.pkl",
+    "destination": "model_pretrained/PBMC-10k_pretrain.pkl",
+    "bytes": 983963,
+    "source_sha256": "d326ebb186c76ed9bbbe0fde42ea0a1d4d8c7e136183e670b60774f9306b26f1"
+  },
+  {
+    "source": "input/PBMC-3k/ATAC_euc_10.npz",
+    "destination": "input/PBMC-3k/ATAC_euc_10.npz",
+    "bytes": 73568,
+    "source_sha256": "46560630a73e7308170491b2d5a4d74a7c05dfd7dd40215b8022751895bf45df"
+  },
+  {
+    "source": "input/PBMC-3k/ATAC_euc_20.npz",
+    "destination": "input/PBMC-3k/ATAC_euc_20.npz",
+    "bytes": 132489,
+    "source_sha256": "3d100c4f26b925ea94cdbcf560d4dd4cf23499c47e0ba7970a9201cc3205a5cf"
+  },
+  {
+    "source": "input/PBMC-3k/ATAC_fea.npy",
+    "destination": "input/PBMC-3k/ATAC_fea.npy",
+    "bytes": 737480,
+    "source_sha256": "93873ea81d574fa2216ab48195d7ba7eaae7ffffb0fe20f5dc1858a0d8c63684"
+  },
+  {
+    "source": "input/PBMC-3k/label.npy",
+    "destination": "input/PBMC-3k/label.npy",
+    "bytes": 30224,
+    "source_sha256": "a9ff9fcb014af0fecbfa4ea3e5e97d248851d60f9536b23a045de0c2efbfef87"
+  },
+  {
+    "source": "input/PBMC-3k/RNA_euc_10.npz",
+    "destination": "input/PBMC-3k/RNA_euc_10.npz",
+    "bytes": 68765,
+    "source_sha256": "dafe4068d1fe0a468c11a84dd118796693e30bb8a9b8969a1346ad6ea1c6654a"
+  },
+  {
+    "source": "input/PBMC-3k/RNA_euc_20.npz",
+    "destination": "input/PBMC-3k/RNA_euc_20.npz",
+    "bytes": 129794,
+    "source_sha256": "6b7e5d129f5fbc657afcfead650b31f22b4b38f88979a21fd29bc7a1a35317c0"
+  },
+  {
+    "source": "input/PBMC-3k/RNA_fea.npy",
+    "destination": "input/PBMC-3k/RNA_fea.npy",
+    "bytes": 1504928,
+    "source_sha256": "ad73a8e6dcb13352479de43ffcf83f691402806e2c9e186f970b7eff4d6185e3"
+  },
+  {
+    "source": "input/PBMC-3k/RNA_pca100.joblib",
+    "destination": "input/PBMC-3k/RNA_pca100.joblib",
+    "bytes": 384226,
+    "source_sha256": "7a79aa91e919856c514ca6c99311331bb6268094b7e26eb6f5671c8dbfdb4526"
+  },
+  {
+    "source": "model_pretrained/PBMC-3k_pretrain.pkl",
+    "destination": "model_pretrained/PBMC-3k_pretrain.pkl",
+    "bytes": 879566,
+    "source_sha256": "9563edcf1668001e2c929c439040e81c78ff5097dc74a9b3e533e33ab0ee03ec"
+  },
+  {
+    "source": "model_pretrained/PBMC-3k_dpcl_v8_hard_seed0_d0p4_k10_s16_p4_sepcenters_legacy.pkl",
+    "destination": "model_pretrained/PBMC-3k_dpcl_v8_hard_seed0_d0p4_k10_s16_p4_sepcenters_legacy.pkl",
+    "bytes": 884846,
+    "source_sha256": "07ce4c5fbadf71de4beb3c5c6542c36df53c6bd496f68e7112dbe73a0dc76d75"
+  },
+  {
+    "source": "input/BMNC/ATAC_cos_10.npz",
+    "destination": "input/BMNC/ATAC_cos_10.npz",
+    "bytes": 200531,
+    "source_sha256": "2b2238f0233e9768f21cad8210bc3f74c1baa0bb80157dd96143d27b1ada8b01"
+  },
+  {
+    "source": "input/BMNC/ATAC_cos_15.npz",
+    "destination": "input/BMNC/ATAC_cos_15.npz",
+    "bytes": 290757,
+    "source_sha256": "9b987d75191753eb9cdd006d20a8f7a77875e0074d5acab24e365eb86b37e962"
+  },
+  {
+    "source": "input/BMNC/ATAC_cos_20.npz",
+    "destination": "input/BMNC/ATAC_cos_20.npz",
+    "bytes": 376222,
+    "source_sha256": "fe6b5a09141bbc92d287a1c97c0299fedb5495a9dda56a0f07586deb68466519"
+  },
+  {
+    "source": "input/BMNC/ATAC_cos_30.npz",
+    "destination": "input/BMNC/ATAC_cos_30.npz",
+    "bytes": 547391,
+    "source_sha256": "a9e7196b7da026b96e431e2d682e030860c1ac6dc76004cd476b2ef6771d3887"
+  },
+  {
+    "source": "input/BMNC/ATAC_cos_5.npz",
+    "destination": "input/BMNC/ATAC_cos_5.npz",
+    "bytes": 109710,
+    "source_sha256": "7376043ec7fab8bda850add8e46f449d46dfe8e0efc99c303f128d83cf8e862c"
+  },
+  {
+    "source": "input/BMNC/ATAC_euc_10.npz",
+    "destination": "input/BMNC/ATAC_euc_10.npz",
+    "bytes": 200844,
+    "source_sha256": "efad8afe83ddde292d74f7089525874e489d112c84bc26ed08c73edf1ef6a380"
+  },
+  {
+    "source": "input/BMNC/ATAC_euc_20.npz",
+    "destination": "input/BMNC/ATAC_euc_20.npz",
+    "bytes": 376469,
+    "source_sha256": "b7a988a6837edb2ddff0efaba48ec18d2877a2c3bdf48516e6ac2055d108e610"
+  },
+  {
+    "source": "input/BMNC/ATAC_fea.npy",
+    "destination": "input/BMNC/ATAC_fea.npy",
+    "bytes": 1840528,
+    "source_sha256": "0f05b291aa18956d4786656affdc260eeaa89036e317da9231827195c0096ce6"
+  },
+  {
+    "source": "input/BMNC/label.npy",
+    "destination": "input/BMNC/label.npy",
+    "bytes": 73744,
+    "source_sha256": "3670920190a0040c23b1fe20f96f48613dde4feb58eeaba8afdd54c6d2e5401b"
+  },
+  {
+    "source": "input/BMNC/RNA_cos_10.npz",
+    "destination": "input/BMNC/RNA_cos_10.npz",
+    "bytes": 201830,
+    "source_sha256": "cf802d26f0e05a974f66f9cf4108d286f22aa702e8ac7a401fe30031c00c2647"
+  },
+  {
+    "source": "input/BMNC/RNA_cos_15.npz",
+    "destination": "input/BMNC/RNA_cos_15.npz",
+    "bytes": 291885,
+    "source_sha256": "aed0fe1dcfc3064d9f4830e2b966fa1b96e70aa845dfc26d8f9980bcdba58379"
+  },
+  {
+    "source": "input/BMNC/RNA_cos_20.npz",
+    "destination": "input/BMNC/RNA_cos_20.npz",
+    "bytes": 377142,
+    "source_sha256": "c8ae8deb39015ea3c3a1b1c7c5a8f21cd8fd4c5329c960921ee3158b5ec8c62a"
+  },
+  {
+    "source": "input/BMNC/RNA_cos_30.npz",
+    "destination": "input/BMNC/RNA_cos_30.npz",
+    "bytes": 547712,
+    "source_sha256": "ec6276cda5bbfe38766bba5bccdae594c8700afc06003856984aca5876056b06"
+  },
+  {
+    "source": "input/BMNC/RNA_cos_5.npz",
+    "destination": "input/BMNC/RNA_cos_5.npz",
+    "bytes": 111308,
+    "source_sha256": "56c4cc7872510ec2f5d9d0a07343b568f28bcc1ea6b4f60630004326e6eab833"
+  },
+  {
+    "source": "input/BMNC/RNA_euc_10.npz",
+    "destination": "input/BMNC/RNA_euc_10.npz",
+    "bytes": 203163,
+    "source_sha256": "49a6412b9e31620fe28258a8d3a621fb78b897594ec9caa97c729fba6986547e"
+  },
+  {
+    "source": "input/BMNC/RNA_euc_20.npz",
+    "destination": "input/BMNC/RNA_euc_20.npz",
+    "bytes": 384911,
+    "source_sha256": "9a385c9ae170aff6cd06cf89790e49912a286f8011d4344dedb12cdd03b1d6d7"
+  },
+  {
+    "source": "input/BMNC/RNA_fea.npy",
+    "destination": "input/BMNC/RNA_fea.npy",
+    "bytes": 3680928,
+    "source_sha256": "8fead6d4635bcfba3374d8439d25744485a1aa3b979e7e9f87032c432aa4ca69"
+  },
+  {
+    "source": "input/BMNC/RNA_pca100.joblib",
+    "destination": "input/BMNC/RNA_pca100.joblib",
+    "bytes": 3035882,
+    "source_sha256": "a48699b2381515a1d052757ff81533b4bfa2fc8755dd70200eca27da96c40856"
+  },
+  {
+    "source": "model_pretrained/BMNC_pretrain.pkl",
+    "destination": "model_pretrained/BMNC_pretrain.pkl",
+    "bytes": 832024,
+    "source_sha256": "b81a7d1f17b675451d0e5b7612b05a4244fa65e6b87b114cc5509dc07805f1a3"
+  },
+  {
+    "source": "model_pretrained/BMNC_dpcl_v8_hard_seed0_d0p4_k10_s16_p4_sepcenters_legacy.pkl",
+    "destination": "model_pretrained/BMNC_dpcl_v8_hard_seed0_d0p4_k10_s16_p4_sepcenters_legacy.pkl",
+    "bytes": 837036,
+    "source_sha256": "15622bacb7898fda8746dccb68b76683d3d6f7a01c1221f03fff9f5f286de545"
+  },
+  {
+    "source": "model/experiment_logs/reproduction_selected_20261001_141418/PBMC-10k_optimized_two_group.log",
+    "destination": "reference_results/PBMC-10k/training.log",
+    "bytes": 487522,
+    "source_sha256": "ca57a4a7c3f83c59e65687e707d865fad80e664b1b31e2e7d68428173d50a543"
+  },
+  {
+    "source": "model/experiment_logs/reproduction_selected_20261001_141418/outputs/PBMC-10k/PBMC-10k/seed0_label.npy",
+    "destination": "reference_results/PBMC-10k/seed0_label.npy",
+    "bytes": 77176,
+    "source_sha256": "1632cfeaf8bab612ff00e6fd83b25d54c892ecc59becebebd85944540b73397a"
+  },
+  {
+    "source": "model/experiment_logs/reproduction_selected_20261001_141418/outputs/PBMC-10k/PBMC-10k/seed0_label_final.npy",
+    "destination": "reference_results/PBMC-10k/seed0_label_final.npy",
+    "bytes": 77176,
+    "source_sha256": "38f45b6faad644738b45b7513c518b4a0515e58b51fe9ee357e40018a674c132"
+  },
+  {
+    "source": "model/experiment_logs/reproduction_selected_20261001_141418/outputs/PBMC-10k/PBMC-10k/seed0_label_final_recovered.npy",
+    "destination": "reference_results/PBMC-10k/seed0_label_final_recovered.npy",
+    "bytes": 77176,
+    "source_sha256": "c2b73a8ff510df411f0c43fe571d382313f8299234ffd9c414ecdf1baa61cf22"
+  },
+  {
+    "source": "model/experiment_logs/reproduction_selected_20261001_141418/outputs/PBMC-10k/PBMC-10k/seed0_label_recovered.npy",
+    "destination": "reference_results/PBMC-10k/seed0_label_recovered.npy",
+    "bytes": 77176,
+    "source_sha256": "49ce23022056864f42ba3ad2929546fc4a458b92c6413cfa4fdeba9aaf33c503"
+  },
+  {
+    "source": "model/experiment_logs/reproduction_selected_20261001_141418/outputs/PBMC-10k/PBMC-10k/seed0_z.npy",
+    "destination": "reference_results/PBMC-10k/seed0_z.npy",
+    "bytes": 770608,
+    "source_sha256": "384460db899e143445eb3008585739974ba8547d9c68d90d8b152bd3203dc3cb"
+  },
+  {
+    "source": "model/experiment_logs/reproduction_selected_20261001_141418/outputs/PBMC-10k/PBMC-10k/seed0_z_final.npy",
+    "destination": "reference_results/PBMC-10k/seed0_z_final.npy",
+    "bytes": 770608,
+    "source_sha256": "e6ab5046b97fb22355171d568c788b131b101b0e26c00fe2c0f601938703dd86"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/PBMC-3k_optimized_unified.log",
+    "destination": "reference_results/PBMC-3k/training.log",
+    "bytes": 311525,
+    "source_sha256": "45e7b77a91f1b7a5aefe7da23cee46d3d73d2576e742cb89e56d5b262cd6c151"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/outputs/PBMC-3k/PBMC-3k/seed0_label.npy",
+    "destination": "reference_results/PBMC-3k/seed0_label.npy",
+    "bytes": 30224,
+    "source_sha256": "98157008d40947a891ced17f3067735f809bb593f7c2f1a34d9ab9db792a7464"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/outputs/PBMC-3k/PBMC-3k/seed0_label_final.npy",
+    "destination": "reference_results/PBMC-3k/seed0_label_final.npy",
+    "bytes": 30224,
+    "source_sha256": "f126e0d85dfc4ae678f88dfbcbc7a227dd4b56b0e59ad24a9bc6dd68b159f0b2"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/outputs/PBMC-3k/PBMC-3k/seed0_label_final_recovered.npy",
+    "destination": "reference_results/PBMC-3k/seed0_label_final_recovered.npy",
+    "bytes": 30224,
+    "source_sha256": "07fab3c9f0afc1e68c7cb553f418b3ca2e47706fbe86c909ea943414632b7e5b"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/outputs/PBMC-3k/PBMC-3k/seed0_label_recovered.npy",
+    "destination": "reference_results/PBMC-3k/seed0_label_recovered.npy",
+    "bytes": 30224,
+    "source_sha256": "958f6d5800ebf3f20ac9a917c5c300dfa695176f400af0fcfd35dc68d223d161"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/outputs/PBMC-3k/PBMC-3k/seed0_z.npy",
+    "destination": "reference_results/PBMC-3k/seed0_z.npy",
+    "bytes": 240896,
+    "source_sha256": "d1f398a38785a439d666bda829258adb232ba9998e02d3a07f04dd5c7ef5b77c"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/outputs/PBMC-3k/PBMC-3k/seed0_z_final.npy",
+    "destination": "reference_results/PBMC-3k/seed0_z_final.npy",
+    "bytes": 240896,
+    "source_sha256": "c88847b88161cb3e4eccbcd84d14264118b493384f3b232064219c27388a6436"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/BMNC_optimized_unified.log",
+    "destination": "reference_results/BMNC/training.log",
+    "bytes": 484993,
+    "source_sha256": "782416eda0f0a83e9b3f124cd83c6ac600731974a998902207aae006122c69b0"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/outputs/BMNC/BMNC/seed0_label.npy",
+    "destination": "reference_results/BMNC/seed0_label.npy",
+    "bytes": 73744,
+    "source_sha256": "ae7e7b910b46b0f459be176c9a69a540dea090a22e6057a5cabc1b7c599ee0f3"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/outputs/BMNC/BMNC/seed0_label_final.npy",
+    "destination": "reference_results/BMNC/seed0_label_final.npy",
+    "bytes": 73744,
+    "source_sha256": "67a553efed5a48dea99377047123cdcb3cbeeca4366e650b722db5e3459b0c76"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/outputs/BMNC/BMNC/seed0_label_final_recovered.npy",
+    "destination": "reference_results/BMNC/seed0_label_final_recovered.npy",
+    "bytes": 73744,
+    "source_sha256": "fe682657f403ca9b63eb1f60cbb04060541fb0e444855708406685a67508c16e"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/outputs/BMNC/BMNC/seed0_z.npy",
+    "destination": "reference_results/BMNC/seed0_z.npy",
+    "bytes": 589056,
+    "source_sha256": "41aa96f622f87a8aa6def743b726f28de1580b2affef3d4a2601bd1ea546cfc5"
+  },
+  {
+    "source": "model/experiment_logs/unified_final_20260615/outputs/BMNC/BMNC/seed0_z_final.npy",
+    "destination": "reference_results/BMNC/seed0_z_final.npy",
+    "bytes": 589056,
+    "source_sha256": "4e326c2355b38da5ace9e4a22484890b0362e4d0a5d5200877db04d313a8857e"
+  }
+]

@@ -30,26 +30,7 @@ python run.py --dataset all
 
 从任意工作目录使用 `python <本包绝对路径>/run.py ...` 也可以运行。使用 `src/main_dpcl.py` 的完整命令时，请先切换到本包根目录。
 
-## 完整参数
 
-- [FULL_PARAMETERS.md](FULL_PARAMETERS.md)：三个数据集全部 88 项参数对照表，以及主要固定设置。
-- [config/ALL_PARAMETERS.csv](config/ALL_PARAMETERS.csv)：当前三个数据集的完整参数，共 264 行，可用 Excel 打开。
-- [PBMC-10k 参数](config/parameters/two_group/PBMC-10k.json)、[PBMC-3k 参数](config/parameters/two_group/PBMC-3k.json)、[BMNC 参数](config/parameters/two_group/BMNC.json)：所有显式值、默认值、参数来源、派生设置及完整 argv。
-- [完整训练命令](config/parameters/two_group/commands.txt)：默认值也已展开。
-- [当前参数协议](config/TWO_GROUP_PROTOCOL.md)：两组配置的说明。
-
-`config/reproduce.py` 是当前运行配置来源，`src/main_dpcl.py` 是模型参数默认值来源。修改后可执行 `python -m config.export_parameters` 更新参数表。正式运行会在日志目录额外保存该次完整参数 JSON。
-
-| 当前配置 | PBMC-10k | PBMC-3k | BMNC |
-|---|---:|---:|---:|
-| 细胞数 / 类别数 | 9631 / 19 | 3762 / 16 | 9202 / 27 |
-| RNA / ATAC 维度 | 100 / 100 | 100 / 49 | 100 / 25 |
-| 学习率 | 0.0008 | 0.0008 | 0.001 |
-| shared / private | 20 / 0 | 16 / 4 | 16 / 4 |
-| 实际图 k | 15,20,25 等权融合 | 10 | 10 |
-| 初始化 | 已有 scMDCL 权重 | 重新 scDPCL 预训练 | 重新 scDPCL 预训练 |
-
-PBMC-10k 同时设置 `k=20` 与 `multi_k=15,20,25`，当前共享图模式实际采用后者。三数据集的 beta、gamma 均为 0，相关损失权重关闭。
 
 ## 文件结构
 
